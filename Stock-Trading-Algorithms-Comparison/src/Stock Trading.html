@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Trading Algorithms Comparison</title>
+    <link rel="stylesheet" href="Stock Trading.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+        <img src="logo-miu.png" alt="logo" class="logo">
+        <h1>Stock Trading Algorithms Comparison</h1>
+        </header>
+        <div class="input-section">
+            <div class="input-group">
+                <label for="prices">Stock Prices (comma-separated):</label>
+                <input type="text" id="prices" value="2,3,7,1,8,11,15" placeholder="Enter prices...">
+            </div>
+            <div class="input-group">
+                <label for="k">Maximum Transactions (k):</label>
+                <input type="number" id="k" value="2" min="1">
+            </div>
+            <div class="input-group">
+                <label for="fee">Transaction Fee:</label>
+                <input type="number" id="fee" value="2" min="0">
+            </div>
+            <button onclick="calculateProfits()">Calculate</button>
+        </div>
+
+        <div class="results-section">
+            <div class="algorithm-card">
+                <h2>Dynamic Programming Approach</h2>
+                <div class="code-display">
+                    <pre><code id="dp-code"></code></pre>
+                </div>
+                <div class="result-display">
+                    <h3>Result:</h3>
+                    <p id="dp-result">-</p>
+                </div>
+                <div class="step-visualization">
+                    <h3>Step-by-Step Execution:</h3>
+                    <div id="dp-steps" class="steps-container"></div>
+                </div>
+            </div>
+
+            <div class="algorithm-card">
+                <h2>Greedy Approach</h2>
+                <div class="code-display">
+                    <pre><code id="greedy-code"></code></pre>
+                </div>
+                <div class="result-display">
+                    <h3>Result:</h3>
+                    <p id="greedy-result">-</p>
+                </div>
+                <div class="step-visualization">
+                    <h3>Step-by-Step Execution:</h3>
+                    <div id="greedy-steps" class="steps-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="visualization-section">
+            <h2>Price Visualization</h2>
+            <canvas id="priceChart"></canvas>
+        </div>
+    </div>
+    <script src="node_modules/chart.js/dist/chart.umd.js"></script>
+    <script src="Stock Trading.js"></script>
+</body>
+</html> 
