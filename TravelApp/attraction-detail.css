@@ -1,172 +1,487 @@
-/* public/css/attraction-detail.css */
+/* Modern Attraction Detail Page Styles - Aligned with homepage.css branding */
 :root {
-    --organic: #6A6F4C;
-    --butter: #f9d0ddda;
-    --coconut: #EDE1D2;
-    --natural: #806044;
-    --palm-oil: #5D2510;
-    --cocoa: #412F26;
-    --shadow: 0 4px 6px rgba(93, 37, 16, 0.1);
-    --transition: all 0.3s ease;
+  --primary-color: #16302B; /* Green from homepage.css for buttons/accents */
+  --secondary-color: #A38560; /* Gold from homepage.css for gradients/hover */
+  --tertiary-color: #390517; /* Burgundy for main headings/text */
+  --text-primary: var(--tertiary-color);
+  --text-secondary: #4b5563;
+  --background-light: var(--cream);
+  --background-white: #ffffff;
+  --border-color: #e5e7eb; /* Keeping a light border for subtle definition */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+/* Apply border-box to all elements to prevent layout issues from padding/borders */
+* {
+  box-sizing: border-box;
+}
+
+.attraction-detail-container {
+  max-width: 1200px; /* Increased max-width for better two-column layout */
+  margin: 0 auto; 
+  padding: 1.5rem; /* Reduced padding */
+  font-family: 'Source Sans Pro', sans-serif; 
+  background-color: var(--background-light);
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  height: 30vh; /* Reduced dynamic height */
+  min-height: 250px; /* Adjusted minimum height */
+  border-radius: 12px; 
+  overflow: hidden;
+  margin-bottom: 2rem; 
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(var(--tertiary-color), 0.1); 
+}
+
+.attraction-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+}
+
+.hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem; /* Reduced padding */
+  background: linear-gradient(to top, rgba(0,0,0,0.65), transparent); /* Lighter gradient */
+  color: white;
+}
+
+.hero-overlay h1 {
+  font-family: 'Cormorant Garamond', serif; 
+  font-size: 2.5rem; /* Reduced font size */
+  font-weight: 700;
+  margin-bottom: 0.8rem; 
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4); /* Reduced text shadow */
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem; 
+  font-size: 1rem; 
+  font-family: 'Source Sans Pro', sans-serif; 
+}
+
+.hero-meta .location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-meta .price {
+  background: rgba(255,255,255,0.2);
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  backdrop-filter: blur(4px);
+}
+
+/* Content Grid */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px; /* Main content flexible, sidebar fixed 300px */
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Main Content */
+.main-content {
+  /* Removed grid-column: 1 / 3; from here as it's better defined in media queries */
+  background: var(--background-white);
+  border-radius: 10px; 
+  padding: 2rem; 
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(var(--tertiary-color), 0.1); 
+  width: 100%; /* Ensure it fills its grid area */
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif; 
+  font-size: 1.6rem; 
+  color: var(--tertiary-color); 
+  margin-bottom: 1.2rem; 
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem; 
+}
+
+.section-title i {
+  color: var(--primary-color);
+}
+
+.description {
+  font-family: 'Source Sans Pro', sans-serif; 
+  font-size: 0.95rem; 
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem; 
+}
+
+/* Sidebar */
+.attraction-detail-container .sidebar {
+  /* Removed grid-column: 1 / 3; from here as it's better defined in media queries */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  height: fit-content;
+  width: 100%; /* Ensure it fills its grid area */
+}
+
+.info-card {
+  background: var(--background-white);
+  border-radius: 10px; 
+  padding: 1.8rem; 
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(var(--tertiary-color), 0.1); 
+}
+
+.info-card h3 {
+  font-family: 'Cormorant Garamond', serif; 
+  font-size: 1.2rem; 
+  color: var(--tertiary-color); 
+  margin-bottom: 1.2rem; 
+  font-weight: 600;
+}
+
+.rating {
+  gap: 0.8rem; 
+  margin-bottom: 1.2rem; 
+}
+
+.star {
+  color: var(--gold); 
+  font-size: 1.4rem; 
+}
+
+.average-rating {
+  font-family: 'Source Sans Pro', sans-serif; 
+  font-size: 1.1rem; 
+}
+
+/* Booking Card */
+.booking-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 1px solid rgba(57, 5, 23, 0.1);
+  margin-top: 1.5rem;
+  position: sticky;
+  top: 100px;
+  z-index: 10;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.booking-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: #390517;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.booking-card .price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+  color: #390517;
+  font-weight: 600;
+}
+
+.booking-button {
+  background: linear-gradient(135deg, #16302B 0%, #A38560 100%);
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(22, 48, 43, 0.3);
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.booking-button i {
+  margin-right: 0.5rem;
+}
+
+.booking-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(22, 48, 43, 0.4);
+  color: white;
+  text-decoration: none;
+}
+
+.booking-note {
+  margin-top: 1rem;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+/* Reviews Section */
+.reviews-section {
+  background: var(--background-white);
+  padding: 2rem; 
+  margin-top: 2.5rem; 
+  border-radius: 10px; 
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(var(--tertiary-color), 0.1); 
+}
+
+.reviews-header {
+  margin-bottom: 1.5rem; 
+}
+
+.reviews-toggle {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); 
+  color: white;
+  padding: 0.7rem 1.4rem; 
+  font-size: 0.95rem; 
+  border-radius: 50px; 
+  gap: 0.5rem; 
+  font-family: 'Source Sans Pro', sans-serif; 
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(var(--primary-color), 0.3); 
+}
+
+.reviews-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(var(--primary-color), 0.4); 
+}
+
+.reviews-content {
+  margin-top: 1.8rem; 
+}
+
+.review-card {
+  background: var(--background-light);
+  padding: 1.2rem; 
+  border-radius: 8px; 
+  margin-bottom: 0.8rem; 
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(var(--tertiary-color), 0.05); 
+}
+
+.reviewer-name {
+  font-family: 'Source Sans Pro', sans-serif; 
+  font-size: 1rem; 
+  font-weight: 600;
+  color: var(--tertiary-color); 
+}
+
+.review-comment {
+  font-family: 'Source Sans Pro', sans-serif; 
+  line-height: 1.5; 
+  color: var(--text-secondary);
+}
+
+/* Add Review Form */
+.add-review-section {
+  margin-top: 2rem; 
+  padding-top: 2rem; 
+  border-top: 1px solid var(--border-color); 
+}
+
+.rating-input,
+.comment-input {
+  margin-bottom: 1.2rem; 
+}
+
+.rating-input label,
+.comment-input label {
+  font-family: 'Source Sans Pro', sans-serif; 
+  margin-bottom: 0.6rem; 
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.rating-input select,
+.comment-input textarea {
+  font-family: 'Source Sans Pro', sans-serif; 
+  padding: 0.9rem; 
+  border: 1px solid var(--border-color);
+  border-radius: 10px; 
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.rating-input select:focus,
+.comment-input textarea:focus {
+  outline: none;
+  border-color: var(--primary-color); 
+}
+
+button[type="submit"] {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); 
+  color: white;
+  padding: 0.9rem 1.8rem; 
+  border-radius: 50px; 
+  font-family: 'Source Sans Pro', sans-serif; 
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(var(--primary-color), 0.3); 
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(var(--primary-color), 0.4); 
+}
+
+/* Responsive Design */
+@media (min-width: 769px) { /* Apply grid layout for larger screens */
+  .content-grid {
+    grid-template-columns: 1fr 300px; /* Main content flexible, sidebar fixed 300px */
+  }
+  .main-content {
+    grid-column: 1 / 2; /* Main content takes the first column */
+  }
+  .attraction-detail-container .sidebar {
+    grid-column: 2 / 3; /* Sidebar takes the second column */
+  }
+}
+
+@media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 1fr; /* Stack columns on smaller tablets */
+  }
+  .main-content, .attraction-detail-container .sidebar {
+    grid-column: auto; /* Reset grid column for stacking */
   }
   
-  .attraction-detail-container {
-    max-width: 1200px;
-    margin: 80px auto 40px;
-    padding: 0 20px;
+  .hero-section {
+    height: 35vh; 
+    min-height: 200px;
   }
   
-  /* Hero Image */
-  .attraction-image {
-    width: 100%;
-    height: 500px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 20px;
-    position: relative;
-    margin-bottom: 30px;
-    box-shadow: var(--shadow);
-  }
-  .attraction-image::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 50%;
-    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-    border-radius: 0 0 20px 20px;
-  }
-  
-  /* Info Card */
-  .attraction-info {
-    background: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
-    margin-bottom: 30px;
-  }
-  .attraction-info h1 {
-    color: var(--palm-oil);
+  .hero-overlay h1 {
     font-size: 2.5rem;
-    margin-bottom: 10px;
-    font-family: 'Chewy', cursive;
   }
-  .attraction-info p { margin: 0 0 15px; color: var(--cocoa); }
-  .attraction-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .attraction-detail-container {
+    padding: 1rem; 
+  }
+  .hero-section {
+    height: 25vh; 
+    min-height: 200px;
+  }
+  .hero-overlay {
+    padding: 1rem;
+  }
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+  .hero-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .main-content,
+  .attraction-detail-container .sidebar,
+  .reviews-section,
+  .info-card,
+  .booking-card {
+    padding: 1.5rem;
+  }
+  .section-title {
+    font-size: 1.4rem;
+  }
+  .description {
+    font-size: 0.9rem;
+  }
+  .info-card h3 {
     font-size: 1.1rem;
-    color: var(--natural);
-    margin: 15px 0;
   }
-  .price-badge {
-    background: var(--natural);
-    color: #fff;
-    padding: 6px 16px;
-    border-radius: 25px;
-    font-weight: bold;
-  }
-  
-  /* Star rating line */
-  .rating.star-rating {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
+  .rating {
+    gap: 0.5rem;
   }
   .star {
-    font-size: 1.4rem;
-    color: var(--organic);
-    transition: var(--transition);
+    font-size: 1.2rem;
   }
-  .star.filled { color: var(--palm-oil); }
   .average-rating {
-    color: var(--natural);
-    font-weight: bold;
+    font-size: 1rem;
   }
-  
-  /* Reviews block */
+  .booking-card .price {
+    font-size: 1.8rem;
+  }
+  .booking-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
   .reviews-section {
-    background: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
-    margin-bottom: 40px;
+    padding: 1.5rem;
   }
-  .reviews-section h2 {
-    font-family: 'Chewy', cursive;
-    color: var(--palm-oil);
-    font-size: 2rem;
-    margin-bottom: 20px;
+  .reviews-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .reviews-toggle {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  .reviews-content {
+    padding: 1.5rem;
   }
   .review-card {
-    background: var(--coconut);
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  .review-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+    padding: 1rem;
   }
   .reviewer-name {
-    font-weight: bold;
-    color: var(--palm-oil);
+    font-size: 1rem;
   }
-  .review-rating .star { font-size: 1.2rem; }
-  .review-comment { margin: 0; color: var(--cocoa); }
-  
-  /* Add review form */
+  .review-comment {
+    font-size: 0.85rem;
+  }
   .add-review-section {
-    background: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
+    padding: 1.5rem;
   }
-  .add-review-section h3 {
-    font-family: 'Chewy', cursive;
-    color: var(--palm-oil);
-    margin-bottom: 20px;
+  .rating-input,
+  .comment-input {
+    margin-bottom: 1rem;
   }
   .rating-input label,
   .comment-input label {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--palm-oil);
-    font-weight: bold;
+    font-size: 0.9rem;
   }
   .rating-input select,
   .comment-input textarea {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid var(--butter);
-    border-radius: 8px;
-    margin-bottom: 15px;
-    font-size: 1rem;
-    color: var(--cocoa);
+    font-size: 0.9rem;
   }
   button[type="submit"] {
-    background: var(--organic);
-    color: #fff;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: var(--transition);
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
   }
-  button[type="submit"]:hover {
-    background: var(--natural);
-    transform: translateY(-2px);
+  .content-grid {
+    grid-template-columns: 1fr; /* Stack columns on smaller tablets and mobile */
   }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .attraction-detail-container { padding: 0 15px; margin-top: 60px; }
-    .attraction-image { height: 300px; }
-    .attraction-info h1 { font-size: 2rem; }
-    .attraction-meta { flex-direction: column; align-items: flex-start; }
+  .main-content,
+  .attraction-detail-container .sidebar {
+    grid-column: auto; /* Reset grid column for stacking */
+    width: auto; /* Ensure auto width when stacked */
   }
-  
+} 
