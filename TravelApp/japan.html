@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Japan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Patrick+Hand&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Explore Japan!</h1>
+        <p>Discover the land of rising sun</p>
+    </div>
+
+    <main class="main-content">
+        <article>
+            <img src="images/japan-map.jpg" alt="Japan Map" class="article-image">
+            <div class="image-caption">
+                <p>Japan is an island nation with 6,852 islands and 10% of the world's active volcanoes!</p>
+            </div>
+
+            <h2 class="section-title">Geography & Nature</h2>
+            <p>Japan has snowy mountains in Hokkaido, tropical beaches in Okinawa, and famous Mount Fuji.</p>
+
+            <div class="fun-fact">
+                <h3>🗻 Did You Know?</h3>
+                <p>Japan has over 5 million vending machines - that's 1 per 25 people!</p>
+            </div>
+
+            <h2 class="section-title">Culture & History</h2>
+            <p>Japan created sushi, anime, and has the world's oldest continuous monarchy.</p>
+        </article>
+
+        <aside class="quick-facts">
+            <h2>Japan Fast Facts</h2>
+            <div class="fact-item">
+                <div class="fact-icon">🌍</div>
+                <div class="fact-content">
+                    <h3>Geography</h3>
+                    <p>Area: 377,975 km²<br>70% mountainous</p>
+                </div>
+            </div>
+            
+            <div class="fact-item">
+                <div class="fact-icon">👫</div>
+                <div class="fact-content">
+                    <h3>Population</h3>
+                    <p>125 million people<br>12% under 15 years old</p>
+                </div>
+            </div>
+
+            <div class="fact-item">
+                <div class="fact-icon">🏛️</div>
+                <div class="fact-content">
+                    <h3>Government</h3>
+                    <p>Constitutional monarchy<br>47 prefectures</p>
+                </div>
+            </div>
+
+            <div class="fact-item">
+                <div class="fact-icon">🌸</div>
+                <div class="fact-content">
+                    <h3>National Symbols</h3>
+                    <p>Animal: Green Pheasant<br>Flower: Cherry Blossom</p>
+                </div>
+            </div>
+        </aside>
+        <section class="restaurant-system">
+            <h2>Restaurant Recommendations</h2>
+            <div class="filter-buttons">
+                <h2>Cuisines</h2>
+                <label><input type="checkbox" value="spanish"> Spanish</label>
+                <label><input type="checkbox" value="european"> European</label>
+                <label><input type="checkbox" value="asian"> Asian</label>
+                <label><input type="checkbox" value="italian"> Italian</label> 
+                <br><br>
+            </div>
+
+            <div class="restaurant-cards">
+                <div class="restaurant-card" data-cuisine="spanish">
+                    <img src="images/jr1.jpg" alt="Spanish Restaurant in Japan">
+                    <div class="restaurant-info">
+                        <h3>El Patio Ginza</h3>
+                        <p>4.7 <span>(890 reviews)</span> - Open now</p>
+                        <p>Spanish - $$$</p>
+                        <p>"Authentic Spanish tapas and paella served in the heart of Tokyo."</p><br>
+                        <a href="reserve.html" class="reserve-button">Reserve</a>
+                    </div>
+                </div>
+
+                <div class="restaurant-card" data-cuisine="asian">
+                    <img src="images/jr3.jpg" alt="Asian Fusion Restaurant in Japan">
+                    <div class="restaurant-info">
+                        <h3>Megu Fusion Dining</h3>
+                        <p>4.6 <span>(1,140 reviews)</span> - Open now</p>
+                        <p>Asian Fusion - $$</p>
+                        <p>"Modern Asian cuisine blending Japanese, Thai, and Korean influences."</p><br>
+                        <a href="reserve.html" class="reserve-button">Reserve</a>
+                    </div>
+                </div>
+
+                <div class="restaurant-card" data-cuisine="italian">
+                    <img src="images/jr2.jpg" alt="Italian Restaurant in Japan">
+                    <div class="restaurant-info">
+                        <h3>Trattoria Tokyo</h3>
+                        <p>4.5 <span>(1,005 reviews)</span> - Open now</p>
+                        <p>Italian - $$</p>
+                        <p>"Homemade pasta and wood-fired pizza in a cozy Kyoto neighborhood."</p><br>
+                        <a href="reserve.html" class="reserve-button">Reserve</a>
+                    </div>
+                </div>
+
+                <div class="restaurant-card" data-cuisine="european">
+                    <img src="images/jr4.jpg" alt="European Restaurant in Japan">
+                    <div class="restaurant-info">
+                        <h3>Bistro Lumière</h3>
+                        <p>4.8 <span>(950 reviews)</span> - Closed today</p>
+                        <p>European - $$$</p>
+                        <p>"Upscale European dining with views of Tokyo Tower and an extensive wine list."</p><br>
+                        <a href="reserve.html" class="reserve-button">Reserve</a>
+                    </div>
+                </div>
+            </div>
+            <section class="hotel-system">
+                <h2 class="section-title">Hotel Recommendations</h2>
+                <div class="filter-buttons">
+                    <h2>Star rating</h2>
+                    <label><input type="checkbox" value="1/2"> 1/2 stars</label>
+                    <label><input type="checkbox" value="3"> 3 stars</label>
+                    <label><input type="checkbox" value="4"> 4 stars</label>
+                    <label><input type="checkbox" value="5"> 5 stars</label>
+                    <br><br>
+                </div>
+    
+                <div class="hotel-cards">
+                    <div class="hotel-card" data-rate="1/2">
+                        <img src="images/japan1h.jpg" alt="Budget Hotel Tokyo">
+                        <div class="hotel-info">
+                            <h3>Capsule Inn Osaka</h3>
+                            <p>$$ / night</p>
+                            <p><span>488 reviews</span></p>
+                            <p>Simple and clean capsule stay in central Osaka</p>
+                            <p>Free WiFi · Public bath access</p>
+                            <a href="reserve.html" class="reserve-button">Reserve</a><br>
+                        </div>
+                    </div>
+    
+                    <div class="hotel-card" data-rate="3">
+                        <img src="C:\Users\danae\OneDrive\Desktop\dev proj\public.avif" alt="3-star Hotel Kyoto">
+                        <div class="hotel-info">
+                            <h3>Hotel Mystays Kyoto Shijo</h3>
+                            <p>$$$ / night</p>
+                            <p>712 reviews</p>
+                            <p>"Convenient location and cozy rooms"</p><br>
+                            <a href="reserve.html" class="reserve-button">Reserve</a>
+                        </div>
+                    </div>
+    
+                    <div class="hotel-card" data-rate="4">
+                        <img src="images/japanh3.jpg" alt="4-star Hotel Tokyo">
+                        <div class="hotel-info">
+                            <h3>Shinjuku Granbell Hotel</h3>
+                            <p><span>1,234 reviews</span></p>
+                            <p>$$$ / night</p>
+                            <p>"Modern design with rooftop bar"</p>
+                            <p>Great for nightlife and sightseeing in Tokyo</p><br>
+                            <a href="reserve.html" class="reserve-button">Reserve</a>
+                        </div>
+                    </div>
+    
+                    <div class="hotel-card" data-rate="5">
+                        <img src="Lobby_Reception-Area_Receptionist-1536x758.jpg.webp" alt="Luxury Hotel Japan">
+                        <div class="hotel-info">
+                            <h3>The Ritz-Carlton, Kyoto</h3>
+                            <p><span>1,892 reviews</span></p>
+                            <p>$$$$ / night</p>
+                            <p>Riverside luxury with traditional Japanese touches</p>
+                            <p>Exceptional service, spa, and fine dining</p><br><br>
+                            <a href="reserve.hote.html" class="reserve-button">Reserve</a>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </section>
+    </main>
+    <script src="web.js"></script>
+</body>
+</html>

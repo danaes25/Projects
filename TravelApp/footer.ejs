@@ -1,0 +1,120 @@
+ <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <!-- Column 1: About Us -->
+                <div class="footer-col">
+                    <h3><i class="fas fa-info-circle"></i> About Us</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Our Story</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Mission</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Team</a></li>
+                    </ul>
+                </div>
+      
+                <!-- Column 2: Contact -->
+                <div class="footer-col">
+                    <h3><i class="fas fa-envelope"></i> Contact</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-phone-alt"></i> +1 (123) 456-7890</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Travel St, World</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> info@exploremycountry.com</a></li>
+                    </ul>
+                </div>
+      
+                <!-- Column 3: Social Media -->
+                <div class="footer-col">
+                    <h3><i class="fas fa-share-alt"></i> Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+      
+            <!-- Copyright -->
+            <div class="copyright">
+                <p>&copy; 2023 ExploreMyCountry. All rights reserved.</p>
+            </div>
+        </div>
+
+        
+    </footer>
+ 
+<!-- <script>
+  window.addEventListener('load', function () {
+    const sidebar = document.getElementById('sidebar');
+    const profileToggle = document.getElementById('profileToggle');
+    const closeBtn = document.querySelector('.close-btn');
+
+    console.log("Sidebar:", sidebar);
+    console.log("ProfileToggle:", profileToggle);
+    console.log("CloseBtn:", closeBtn);
+
+    if (!sidebar) {
+      console.warn("Sidebar element NOT found");
+      return;
+    }
+
+    if (!profileToggle) {
+      console.warn("Profile toggle button NOT found");
+      return;
+    }
+
+    profileToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      sidebar.classList.toggle('show');
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        sidebar.classList.remove('show');
+      });
+    }
+  });
+</script> -->
+<script>
+  window.addEventListener('load', function () {
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.querySelector('.close-btn');
+
+    if (!sidebar) {
+      console.warn("Sidebar element NOT found");
+      return;
+    }
+
+    // ✅ Toggle sidebar for ALL elements with .profileToggle class
+    document.querySelectorAll('.profileToggle').forEach(toggle => {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        sidebar.classList.toggle('show');
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        sidebar.classList.remove('show');
+      });
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('load', function () {
+    const homeLink = document.getElementById('homeLink');
+
+    if (homeLink) {
+      homeLink.addEventListener('click', function (e) {
+        // If we're on the homepage
+        if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+          e.preventDefault(); // Stop normal link
+          window.scrollTo({ top: 0, behavior: 'smooth' }); // Smooth scroll
+        }
+        // Else, let the link do its normal work (go to /)
+      });
+    }
+  });
+</script>
+

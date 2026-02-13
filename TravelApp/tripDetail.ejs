@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <h1><%= trip.title %></h1>
+      <p class="lead"><%= trip.description %></p>
+      
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Trip Details</h5>
+          <ul class="list-unstyled">
+            <li><strong>Country:</strong> <%= trip.country.name %></li>
+            <li><strong>Category:</strong> <%= trip.category.name %></li>
+            <li><strong>Price:</strong> $<%= trip.price %></li>
+            <li><strong>Start Date:</strong> <%= new Date(trip.startDate).toLocaleDateString() %></li>
+            <li><strong>End Date:</strong> <%= new Date(trip.endDate).toLocaleDateString() %></li>
+          </ul>
+        </div>
+      </div>
+
+      <% if (trip.locations && trip.locations.length > 0) { %>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Locations</h5>
+            <ul class="list-group">
+              <% trip.locations.forEach(location => { %>
+                <li class="list-group-item"><%= location.name %></li>
+              <% }); %>
+            </ul>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Book This Trip</h5>
+          <p class="card-text">Price: $<%= trip.price %></p>
+          <form action="/bookings" method="POST">
+            <input type="hidden" name="tripId" value="<%= trip._id %>">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Book Now</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

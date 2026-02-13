@@ -1,0 +1,106 @@
+<%- include('../partials/header') %>
+<link rel="stylesheet" href="/form.css" />
+
+<div class="admin-country-wrapper">
+     </div><br>
+  <h2>Add a New Country</h2>
+
+  <form id="countryForm" enctype="multipart/form-data">
+    <label>Country Name:</label>
+    <input type="text" name="name" required>
+
+    <label>Upload Images:</label>
+    <input type="file" id="countryImageInput" name="images" accept="image/*" multiple required>
+    <div id="imagePreviewContainer" style="display: flex; gap: 10px; margin-top: 10px;"></div>
+
+    
+    <button type="submit">Add Country</button>
+  </form>
+
+  <div id="countrySuccessMsg" style="display: none; color: green; margin-top: 10px;">
+     Country added successfully!
+  </div>
+
+  <hr>
+
+  <h3>Existing Countries:</h3>
+  <ul id="countryList">
+    <% countries.forEach(c => { %>
+      <li style="margin-bottom: 20px;">
+        <strong><%= c.name %></strong>
+        <button onclick="deleteCountry('<%= c._id %>')">Remove</button>
+        <div style="display: flex; gap: 10px; margin-top: 5px;">
+          <% c.images.forEach(img => { %>
+            <img src="<%= img %>" style="width: 80px; height: 60px; object-fit: cover;">
+          <% }) %>
+        </div>
+        <p><%= c.description %></p>
+      </li>
+    <% }) %>
+  </ul>
+</div>
+
+<script>
+  const imageInput = document.getElementById('countryImageInput');
+  const previewContainer = document.getElementById('imagePreviewContainer');
+  const successMsg = document.getElementById('countrySuccessMsg');
+  const countryForm = document.getElementById('countryForm');
+
+  imageInput.addEventListener('change', function () {
+    previewContainer.innerHTML = '';
+    Array.from(this.files).forEach(file => {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        img.style.width = '120px';
+        img.style.height = '80px';
+        img.style.objectFit = 'cover';
+        previewContainer.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
+  countryForm.addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const formData = new FormData(countryForm);
+
+  try {
+    const response = await fetch('/admin/countries', {
+      method: 'POST',
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      successMsg.style.display = 'block';
+      countryForm.reset();
+      previewContainer.innerHTML = '';
+      setTimeout(() => location.reload(), 1000);
+    } else {
+      console.error('Upload failed:', result);
+      alert('Upload failed: ' + (result.message || 'Unknown error'));
+    }
+  } catch (err) {
+    console.error('Fetch error:', err); //  log the error
+    alert('An error occurred.');
+  }
+});
+
+  async function deleteCountry(id) {
+    if (confirm('Are you sure?')) {
+      const res = await fetch(`/admin/countries/${id}`, { method: 'DELETE' });
+      const result = await res.json();
+      if (result.success) {
+        alert('Deleted');
+        location.reload();
+      } else {
+        alert('Failed to delete');
+      }
+    }
+  }
+</script>
+
+<%- include('../partials/footer') %>

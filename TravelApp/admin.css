@@ -1,0 +1,140 @@
+/* ================================
+   Admin Pages Styles - admin.css
+=================================== */
+
+/* Use your color palette */
+:root {
+  --burgundy: #390517;
+  --gold: #A38560;
+  --green: #16302B;
+  --forest: #03110D;
+  --butter: #f9d0ddda;
+  --organic: #6A6F4C;
+  --shadow: 0 4px 6px rgba(3, 17, 13, 0.2);
+}
+
+/* Page container */
+.admin-users,
+.admin-agencies {
+  padding: 50px 2rem;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Headings */
+.admin-users h1,
+.admin-agencies h1 {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--burgundy);
+  margin-bottom: 20px;
+}
+
+/* Sorting dropdown */
+#sort-users,
+#sort-agencies {
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+/* Tables */
+.admin-users table,
+.admin-agencies table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.admin-users th,
+.admin-agencies th {
+  background: var(--organic);
+  color: #fff;
+  padding: 12px 20px;
+  text-align: left;
+}
+
+.admin-users td,
+.admin-agencies td {
+  padding: 12px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.admin-users tr:hover,
+.admin-agencies tr:hover {
+  background: var(--butter);
+}
+
+/* Buttons */
+.edit-user-btn,
+.view-info-btn,
+.mark-trusted-btn {
+  padding: 6px 14px;
+  margin: 2px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  color: #fff;
+}
+
+.edit-user-btn {
+  background: var(--green);
+}
+
+.edit-user-btn:hover {
+  background: var(--burgundy);
+}
+
+.view-info-btn {
+  background: var(--organic);
+}
+
+.view-info-btn:hover {
+  background: var(--gold);
+}
+
+.mark-trusted-btn {
+  background: var(--burgundy);
+}
+
+.mark-trusted-btn:hover {
+  background: var(--gold);
+  color: #000;
+}
+
+/* Expanded details row styling (optional) */
+.agency-details-row {
+  background: #f7f7f7;
+  font-size: 0.95rem;
+}
+
+.agency-details-row td {
+  padding: 15px 25px;
+}
+
+/* Pagination (placeholder) */
+.pagination {
+  margin-top: 30px;
+  display: flex;
+  gap: 8px;
+}
+
+.pagination button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: var(--organic);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.pagination button:hover {
+  background: var(--gold);
+  color: #000;
+}

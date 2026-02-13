@@ -1,0 +1,16 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <title><%= country.name %> - Locations</title> <link rel="stylesheet" href="/homepage.css" /> </head> <body> <h1>Locations in <%= country.name %></h1>
+<% if (locations.length === 0) { %>
+<p>No locations available.</p>
+<% } else { %>
+<ul>
+<% locations.forEach(loc => { %>
+<li>
+<h2><%= loc.name %></h2>
+<p><%= loc.city %></p>
+<p><%= loc.description %></p>
+</li>
+<% }) %>
+</ul>
+<% } %>
+
+</body> </html>

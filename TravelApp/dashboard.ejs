@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/homepage.css" />
+  <link rel="stylesheet" href="/dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+<%- include('partials/header') %>
+
+<div class="main-container">
+  <h1 class="title"><i class="fas fa-tachometer-alt"></i> Dashboard</h1>
+
+  <div class="dashboard-cards">
+    <div class="card">
+      <h2><i class="fas fa-user"></i> Profile</h2>
+      <p><strong>Name:</strong> <%= user.name %></p>
+      <p><strong>Email:</strong> <%= user.email %></p>
+      <p><strong>Role:</strong> <%= user.role %></p>
+      <a href="/profile" class="btn">Edit Profile</a>
+    </div>
+
+    <% if (user.role === 'agency') { %>
+    <div class="card">
+      <h2><i class="fas fa-briefcase"></i> My Countries</h2>
+      <p>Manage your assigned countries.</p>
+      <a href="/agency/countries" class="btn">Manage Countries</a>
+    </div>
+    <% } %>
+
+    <% if (user.role === 'admin') { %>
+    <div class="card">
+      <h2><i class="fas fa-cogs"></i> Admin Panel</h2>
+      <p>Manage categories and trips.</p>
+      <a href="/admin/categories" class="btn">Admin Panel</a>
+    </div>
+    <% } %>
+
+    <div class="card danger">
+      <h2><i class="fas fa-sign-out-alt"></i> Logout</h2>
+      <p>End your session safely.</p>
+      <a href="/logout" class="btn danger">Logout</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

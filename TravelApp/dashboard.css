@@ -1,0 +1,200 @@
+/* dashboard.css */
+
+.card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+:root {
+  --organic: #6A6F4C;
+  --butter: #f9d0ddda;
+  --coconut: #EDE1D2;
+  --natural: #806044;
+  --palm-oil: #5D2510;
+  --cocoa: #412F26;
+  --shadow: 0 4px 6px rgba(93, 37, 16, 0.1);
+}
+
+body {
+  font-family: 'Patrick Hand', cursive;
+  background: var(--coconut);
+  color: var(--cocoa);
+}
+
+.admin-dashboard {
+  padding: 50px 2rem 2rem;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: var(--butter);
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 30px 30px; 
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card .icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card .count {
+  font-size: 1.0rem;
+  font-weight: bold;
+}
+
+
+.card .trend {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.9rem;
+  color: var(--palm-oil);
+}
+
+.charts-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.chart-container {
+  background: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.recent-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.recent-table th, .recent-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--coconut);
+}
+
+.recent-table th {
+  background: var(--organic);
+  color: white;
+}
+
+.recent-table tr:hover {
+  background: var(--butter);
+}
+
+/* Ensure table text aligns nicely */
+.recent-table th,
+.recent-table td {
+  text-align: left;      /* or center if you prefer */
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--coconut);
+}
+
+.recent-table th {
+  background: var(--organic);
+  color: white;
+  text-align: left;     /* keep consistent with td */
+}
+
+.recent-table td {
+  text-align: left;     /* consistent with th */
+}
+
+/* Clean spacing for the entire collapsibles section */
+.recent-tables {
+  margin-top: 40px;
+}
+
+.collapsible {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.collapsible summary {
+  font-family: 'Patrick Hand', cursive; /* your site font */
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: var(--coconut); /* use your palette */
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.collapsible summary:hover {
+  background: var(--butter); /* hover accent */
+}
+
+.collapsible .table-wrapper {
+  padding: 0 20px 20px 20px;
+}
+
+.collapsible table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.collapsible th, .collapsible td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.collapsible th {
+  background: var(--coconut);
+  font-weight: bold;
+}
+
+.collapsible table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;               /* same as .recent-table */
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.collapsible th,
+.collapsible td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--coconut);
+}
+
+.collapsible th {
+  background: var(--organic);
+  color: white;
+  text-align: left;
+}
+
+.collapsible tr:hover {
+  background: var(--butter);
+}
+
+.collapsible th,
+.collapsible td {
+  text-align: left;
+}

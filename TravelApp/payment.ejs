@@ -1,0 +1,95 @@
+<%- include('./partials/header') %>
+<%- include('../partials/sidebar') %>
+<style>
+  body {
+    background: #fef9f4;
+    font-family: 'Playfair Display', serif;
+    padding: 0;
+    margin: 0;
+  }
+
+  .payment-section {
+    max-width: 500px;
+    margin: 120px auto;
+    background: white;
+    padding: 2rem 2.5rem;
+    border: 2px solid #4B0101;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .payment-section h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #4B0101;
+    font-size: 2rem;
+  }
+
+  .payment-section label {
+    font-weight: bold;
+    margin-top: 1rem;
+    display: block;
+  }
+
+  .payment-section input[type="text"],
+  .payment-section input[type="password"],
+  .payment-section input[type="month"] {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .payment-section .radio-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .payment-section button {
+    width: 100%;
+    padding: 0.7rem;
+    background-color: #4B0101;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .payment-section button:hover {
+    background-color: #720909;
+  }
+</style>
+
+<div class="payment-section">
+  <h1>Select a Payment Method</h1>
+  <form action="/payment/confirm" method="POST">
+    <input type="hidden" name="bookingId" value="<%= bookingId %>" />
+
+    <label for="cardNumber">Card Number</label>
+    <input type="text" name="cardNumber" required placeholder="1234 5678 9012 3456" />
+
+    <label for="expiry">Expiry Date</label>
+    <input type="month" name="expiry" required />
+
+    <label for="cvv">CVV</label>
+    <input type="text" name="cvv" required placeholder="123" />
+
+    <label for="password">Payment Password</label>
+    <input type="password" name="password" required placeholder="Enter your password" />
+
+    <div class="radio-group">
+      <label><input type="radio" name="method" value="credit" checked /> Credit Card</label>
+      <label><input type="radio" name="method" value="paypal" /> PayPal</label>
+    </div>
+
+    <button type="submit">Confirm Payment</button>
+  </form>
+</div>
+
+<%- include('./partials/footer') %>

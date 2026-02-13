@@ -1,0 +1,39 @@
+<%- include('../partials/header') %>
+<%- include('../partials/sidebar') %>
+<link rel="stylesheet" href="/agencydashboard.css" />
+<link rel="stylesheet" href="/homepage.css">
+
+<div class="agency-account">
+    <h1>Hello!, <%= user.name %>!</h1>
+    <p>You are logged in as <strong>Agency</strong>.</p>
+
+    <div class="cards-grid">
+        <section class="profile-section">
+            <h2>Agency Info</h2>
+            <p><strong>Name:</strong> <%= user.name %></p>
+            <p><strong>Email:</strong> <%= user.email %></p>
+            <a href="/profile" class="btn">Edit Info</a>
+        </section>
+
+        <section class="bookings-section">
+            <h2>Our Trips</h2>
+            <p>View and manage all trips your agency has created.</p>
+            <a href="/agency/trips" class="btn">View Trips</a>
+        </section>
+
+        <section class="favorites-section">
+            <h2>Add Trip</h2>
+            <p>Create a new trip listing for your agency.</p>
+            <a href="/agency/trips/new" class="btn">Add Trip</a>
+            <a href="/agency/locations/new" class="btn">Add locations</a>
+        </section>
+
+        <section class="favorites-section">
+            <h2>Our Restaurants</h2>
+            <p>Manage your agency’s listed restaurants.</p>
+            <a href="/restaurants/add" class="btn">Add Restaurant</a>
+        </section>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,142 @@
+<%- include('partials/header') %>
+<%- include('partials/sidebar') %>
+<link rel="stylesheet" href="/homepage.css">
+<link rel="stylesheet" href="/profile.css">
+
+<div class="profile-wrapper">
+  <div class="profile-sidebar-wrapper">
+    <aside class="profile-sidebar">
+      <% if (user.profilePic) { %>
+        <img id="avatarPreview" src="<%= user.profilePic %>" alt="Profile Picture" class="avatar-img">
+      <% } else { %>
+        <div id="avatarPreview" class="avatar-circle">
+          <%= user.name.charAt(0).toUpperCase() %>
+        </div>
+      <% } %>
+
+      <form id="uploadForm" action="/profile/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" id="fileInput" name="profilePic" accept="image/*" style="display: none;">
+        <button type="button" class="upload-btn" onclick="document.getElementById('fileInput').click()">
+          <%= user.profilePic ? 'Change Picture' : 'Add Picture' %>
+        </button>
+      </form>
+
+      <h2 class="profile-name"><%= user.name %></h2>
+    </aside>
+  </div>
+
+  <div class="profile-main-wrapper">
+    <main class="profile-main">
+      <h1>Profile Settings</h1>
+
+      <form id="profileForm" action="/profile" method="POST">
+
+        <label>Name</label>
+        <input type="text" name="name" value="<%= user.name %>" required>
+
+        <% if (user.role === 'agency') { %>
+          <label>Business Name</label>
+          <input type="text" name="businessName" value="<%= user.businessName || '' %>">
+
+          <label>Website or Social Link</label>
+          <input type="url" name="website" value="<%= user.website || '' %>">
+
+          <label>Agency Description</label>
+          <textarea name="description" rows="4"><%= user.description || '' %></textarea>
+        <% } %>
+
+        <label>Email</label>
+        <input type="email" name="email" value="<%= user.email %>" required>
+
+        <label>Phone</label>
+        <input type="tel" name="phone" value="<%= user.phone || '' %>">
+
+        <label>New Password</label>
+        <input type="password" name="newPassword" placeholder="Leave blank to keep current">
+
+        <button type="submit" class="save-btn">Save Profile</button>
+        <div id="successMessage" style="display: none; color: green; margin-top: 10px;">
+  ✅ Profile updated successfully!
+</div>
+      </form>
+    </main>
+  </div>
+</div>
+
+<script>
+  const fileInput = document.getElementById('fileInput');
+  const preview = document.getElementById('avatarPreview');
+  const form = document.getElementById('uploadForm');
+
+  fileInput.onchange = async function() {
+    if (this.files && this.files[0]) {
+      const file = this.files[0];
+      const reader = new FileReader();
+
+      // Show preview immediately
+      reader.onload = function(e) {
+        if (preview.tagName.toLowerCase() === 'img') {
+          preview.src = e.target.result;
+        } else {
+          preview.style.backgroundImage = `url(${e.target.result})`;
+          preview.style.backgroundSize = 'cover';
+          preview.style.backgroundPosition = 'center';
+          preview.textContent = '';
+        }
+      };
+      reader.readAsDataURL(file);
+
+      // Upload with AJAX, no reload
+      const formData = new FormData();
+      formData.append('profilePic', file);
+
+      try {
+        const response = await fetch('/profile/upload', {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
+        console.log('Uploaded:', result);
+      } catch (err) {
+        console.error('Upload failed', err);
+      }
+    }
+    
+  };
+  const profileForm = document.getElementById('profileForm');
+  const successMessage = document.getElementById('successMessage');
+
+  profileForm.addEventListener('submit', async function(e) {
+    e.preventDefault(); // Stop normal submit
+
+    // Grab all form fields
+    const formData = new FormData(profileForm);
+
+    try {
+      const response = await fetch('/profile', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        // ✅ Show success message
+        successMessage.style.display = 'block';
+
+        // ✅ Hide it again after 3 seconds
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+        }, 3000);
+      } else {
+        alert('Failed to update profile.');
+      }
+
+    } catch (err) {
+      console.error(err);
+      alert('An error occurred.');
+    }
+  });
+</script>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,158 @@
+<%- include('./partials/header') %>
+<style>
+  body {
+    background: #fef9f4;
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bookings-section {
+    padding: 120px 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  h1 {
+    text-align: center;
+    color: #4B0101;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  .alert.success {
+    background-color: #d4edda;
+    border-left: 6px solid #155724;
+    color: #155724;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 2px solid #4B0101;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  th, td {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  th {
+    background-color: #4B0101;
+    color: white;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover {
+    background-color: #fceeee;
+  }
+
+  .trip-image {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .no-bookings {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    color: #555;
+  }
+
+  .description-cell {
+    max-width: 300px;
+    text-align: left;
+  }
+</style>
+
+<div class="bookings-section">
+  <h1>My Bookings</h1>
+
+  <% if (success) { %>
+    <div class="alert success"><%= success %></div>
+  <% } %>
+
+  <% if (bookings.length === 0) { %>
+    <p class="no-bookings">You have not booked any trips yet.</p>
+  <% } else { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Item</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Location/Country</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% bookings.forEach(booking => { %>
+          <tr>
+            <td>
+              <% if (booking.trip) { %>
+                <img class="trip-image" src="<%= booking.trip?.imageURL || '/images/default-trip.jpg' %>" alt="Trip Image">
+              <% } else if (booking.attraction) { %>
+                <img class="trip-image" src="<%= booking.attraction.image || '/images/default-attraction.jpg' %>" alt="Attraction Image">
+              <% } else { %>
+                <img class="trip-image" src="/images/default.jpg" alt="Default Image">
+              <% } %>
+            </td>
+            <td>
+              <% if (booking.trip) { %>
+                <%= booking.trip?.title || 'N/A' %>
+              <% } else if (booking.attraction) { %>
+                <%= booking.attraction.name %>
+              <% } else { %>
+                N/A
+              <% } %>
+            </td>
+            <td class="description-cell">
+              <% if (booking.trip) { %>
+                <%= booking.trip?.description || 'No description provided.' %>
+              <% } else if (booking.attraction) { %>
+                <%= booking.attraction.description || 'No description provided.' %>
+              <% } else { %>
+                No description provided.
+              <% } %>
+            </td>
+            <td>
+              <% if (booking.trip) { %>
+                $<%= booking.trip?.price || 'N/A' %>
+              <% } else if (booking.attraction) { %>
+                <%= booking.attraction.price === 0 ? 'Free' : '$' + booking.attraction.price %>
+              <% } else { %>
+                N/A
+              <% } %>
+            </td>
+            <td>
+              <% if (booking.trip) { %>
+                <%= booking.trip?.country?.name || 'N/A' %>
+              <% } else if (booking.attraction && booking.attraction.country) { %>
+                <%= booking.attraction.country.name || 'N/A' %>
+              <% } else { %>
+                N/A
+              <% } %>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+</div>
+
+<%- include('./partials/footer') %>

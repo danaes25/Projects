@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/signup.css">
+</head>
+
+
+<body>
+    <% if (success) { %>
+  <div class="flash success"><%= success %></div>
+<% } %>
+<% if (error) { %>
+  <div class="flash error"><%= error %></div>
+<% } %>
+    <div class="signup-container">
+        <div class="signup-header">
+            <h1>Create Account</h1>
+            <p>Join our community</p>
+        </div>
+        
+        <form action="/register" method="POST" class="signup-form">
+            <div class="input-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="name" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a password" required>
+                <div class="password-hint">Must be at least 8 characters</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+            
+            <div class="terms">
+                <input type="checkbox" id="agree-terms" required>
+                <label for="agree-terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+            </div>
+
+            <div class="input-group">
+  <label for="role">Register As</label>
+  <select name="role" id="role" required>
+    <option value="client">Client</option>
+    <option value="agency">Agency</option>
+  </select>
+</div>
+ 
+<div class="input-group agency-only">
+  <label for="businessName">Business Name</label>
+  <input type="text" name="businessName" placeholder="Enter business name">
+</div>
+
+<div class="input-group agency-only">
+  <label for="phone">Phone Number</label>
+  <input type="tel" name="phone" placeholder="Enter your phone number">
+</div>
+
+<div class="input-group agency-only">
+  <label for="website">Website or Social Link</label>
+  <input type="url" name="website" placeholder="https://yourbusiness.com">
+</div>
+
+<div class="input-group agency-only">
+  <label for="description">Short Description</label>
+  <textarea name="description" rows="3" placeholder="Tell us about your agency"></textarea>
+</div>
+
+            
+            <button type="submit" class="signup-btn">Sign Up</button>
+            
+            <div class="login-link">
+                Already have an account? <a href="/login" target="_blank">Log in</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="signup.js"></script>
+</body>
+</html>
+
+
+<script>
+  const roleSelect = document.getElementById('role');
+  const agencyFields = document.querySelectorAll('.agency-only');
+
+  function toggleAgencyFields() {
+    const isAgency = roleSelect.value === 'agency';
+    agencyFields.forEach(field => {
+      field.style.display = isAgency ? 'flex' : 'none';
+    });
+  }
+
+  roleSelect.addEventListener('change', toggleAgencyFields);
+  toggleAgencyFields(); // initial call on load
+</script>

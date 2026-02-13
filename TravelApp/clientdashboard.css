@@ -1,0 +1,142 @@
+/* =============================
+   Client Dashboard Styles
+   ============================= */
+
+:root {
+  --organic: #6A6F4C;
+  --butter: #f9d0ddda;
+  --coconut: #EDE1D2;
+  --natural: #806044;
+  --palm-oil: #5D2510;
+  --cocoa: #412F26;
+  --shadow: 0 4px 6px rgba(93, 37, 16, 0.1);
+}
+
+body {
+  font-family: 'Patrick Hand', cursive;
+  background: var(--coconut);
+  color: var(--cocoa);
+}
+
+.client-account {
+  padding: 100px 2rem 2rem;  /* push below fixed header */
+}
+
+.client-account h1 {
+  font-family: 'Chewy', cursive;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.client-account p {
+  margin-bottom: 2rem;
+}
+
+.profile-section,
+.bookings-section,
+.favorites-section {
+  background: var(--butter);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.profile-section p {
+  margin: 0.5rem 0;
+}
+
+.profile-section .btn {
+  display: inline-block;
+  margin-top: 1rem;
+  background: var(--organic);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+/* General button for both */
+.btn {
+  display: inline-block;
+  background: var(--organic);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+
+.bookings-section table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.bookings-section th,
+.bookings-section td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--coconut);
+  text-align: left;
+}
+
+.bookings-section th {
+  background: var(--organic);
+  color: white;
+}
+
+.bookings-section tr:hover {
+  background: var(--butter);
+}
+
+.favorites-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.favorites-section li {
+  padding: 0.75rem 1rem;
+  background: white;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove-btn {
+  background: var(--palm-oil);
+  color: white;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.cta {
+  text-align: center;
+}
+
+.cta .btn {
+  background: var(--organic);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;    /* space between cards */
+  margin-bottom: 2rem;
+}
+
+.cards-grid section {
+  flex: 1 1 300px;   /* each card tries to be ~300px but flexes */
+}
+

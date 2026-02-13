@@ -1,0 +1,255 @@
+/* Color Variables */
+:root {
+    --organic: #6A6F4C;
+    --butter: #CB889D;
+    --coconut: #EDE1D2;
+    --natural: #806044;
+    --palm-oil: #5D2510;
+    --cocoa: #412F26;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Patrick Hand', cursive;
+    background-color: var(--coconut);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 60px;
+}
+
+.forgot-password-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    text-align: center;
+    border-top: 5px solid var(--butter);
+    margin: 20px 0;
+}
+
+h1 {
+    font-family: 'Chewy', cursive;
+    font-size: 1.8rem;
+    color: var(--palm-oil);
+    margin-bottom: 15px;
+}
+
+p {
+    color: var(--cocoa);
+    margin-bottom: 25px;
+    font-size: 1rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--natural);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1rem;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--organic);
+    box-shadow: 0 0 0 3px rgba(106, 111, 76, 0.2);
+}
+
+.submit-btn {
+    background-color: var(--organic);
+    color: var(--coconut);
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #7a8057;
+}
+
+.secondary-link {
+    color: var(--palm-oil);
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.secondary-link:hover {
+    text-decoration: underline;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    color: var(--natural);
+    font-size: 0.9rem;
+    margin: 20px 0;
+}
+
+.divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid var(--natural);
+}
+
+.divider::before {
+    margin-right: 10px;
+}
+
+.divider::after {
+    margin-left: 10px;
+}
+
+.create-account {
+    color: var(--organic);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.create-account:hover {
+    text-decoration: underline;
+}
+
+.back-to-login {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.back-to-login a {
+    color: var(--palm-oil);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-to-login a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styles */
+.site-footer {
+    background: var(--palm-oil);
+    color: var(--coconut);
+    padding: 40px 0 20px;
+    border-top: 3px solid var(--natural);
+    font-family: 'Patrick Hand', cursive;
+    width: 100%;
+    margin-top: auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-col h3 {
+    color: var(--butter);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col li {
+    margin-bottom: 10px;
+}
+
+.footer-col a {
+    color: var(--coconut);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-col a:hover {
+    color: var(--butter);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    color: var(--coconut);
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--butter);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(237, 225, 210, 0.2);
+    font-size: 0.9rem;
+    color: var(--coconut) !important; /* Force white color */
+}
+
+.copyright p {
+    color: var(--coconut) !important; /* Force white color */
+    margin: 0; /* Remove default paragraph margins */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-columns {
+        grid-template-columns: 1fr;
+    }
+    
+    body {
+        padding-bottom: 20px;
+    }
+
+    .copyright {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .forgot-password-container {
+        padding: 25px 20px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+}

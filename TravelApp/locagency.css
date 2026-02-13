@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+
+:root {
+  --burgundy: #390517;
+  --gold: #A38560;
+  --green: #16302B;
+  --forest: #03110D;
+  --silver: #E0E0E0;
+  --background: #ffffff;       /* Required: white form base */
+  --input-bg: #F8F8F8;
+  --border-color: #D1D1D1;
+  --shadow: 0 6px 14px rgba(3, 17, 13, 0.1);
+  --transition: all 0.3s ease;
+  --font: 'Playfair Display', serif;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--silver);
+  margin: 0;
+  padding: 2rem;
+  color: var(--burgundy);
+}
+
+form {
+  max-width: 640px;
+  margin: 4rem auto;
+  background: var(--background);
+  padding: 2.5rem 3rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--green);
+}
+
+form h1 {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 2rem;
+}
+
+form div {
+  margin-bottom: 1.5rem;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--burgundy);
+}
+
+form input[type="text"],
+form select,
+form textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  font-size: 1rem;
+  background-color: var(--input-bg);
+  color: var(--forest);
+  transition: border-color 0.3s ease;
+  font-family: var(--font);
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+form button {
+  display: block;
+  width: 100%;
+  background: linear-gradient(to right, var(--gold), var(--green));
+  color: rgb(255, 255, 255);
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 14px 0;
+  border: none;
+  border-radius: 8px;
+  transition: var(--transition);
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+form button:hover {
+  background: linear-gradient(to right, var(--green), var(--burgundy));
+  cursor: pointer;
+}

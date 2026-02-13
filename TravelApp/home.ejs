@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Swiper core CSS (v11) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+        <!-- Your custom Swiper styles -->
+        <link rel="stylesheet" href="/swiper.css" />
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ExploreMyCountry - Attractions</title>
+
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet/dist/leaflet.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet/dist/leaflet.css"
+        />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="/homepage.css" />
+    </head>
+    <body>
+        <%- include('partials/header') %> <%- include('partials/sidebar') %> <%
+        if (success) { %>
+        <div class="alert success"><%= success %></div>
+        <% } %> <% if (error) { %>
+        <div class="alert error"><%= error %></div>
+        <% } %>
+
+        <!-- Homepage Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Discover Amazing Destinations</h1>
+                <p>Find the best attractions, restaurants, and experiences</p>
+         <div class="search-wrapper">
+  <form action="/trips/search" method="GET" class="search-bar">
+    <input
+      type="text"
+      name="location"
+      placeholder="Search for a country, city or attraction..."
+    />
+    <button type="submit">Explore Available Trips</button>
+  </form>
+</div>
+
+
+
+
+
+
+            </div>
+        </section>
+
+        <section class="explainer-slider">
+            <h2>How ExploreMyCountry Works</h2>
+
+            <div class="swiper explainerSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <h3>🌍 Discover Top Destinations</h3>
+                        <p>
+                            Explore handpicked attractions and hidden gems in
+                            every country.
+                        </p>
+                    </div>
+                    <div class="swiper-slide">
+                        <h3>📅 Plan Your Perfect Trip</h3>
+                        <p>
+                            Use our budget planner and local guides to organize
+                            every detail.
+                        </p>
+                    </div>
+                    <div class="swiper-slide">
+                        <h3>💬 Share Reviews & Insights</h3>
+                        <p>
+                            Help fellow travelers by rating attractions and
+                            sharing tips.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
+            <div class="get-started-wrapper">
+                <a href="#main-content" class="get-started-btn">Get Started</a>
+            </div>
+        </section>
+
+        <!-- Attractions Section -->
+        <section id="main-content"></section>
+        <h2 class="section-title">Top Attractions</h2>
+        <div class="carousel">
+            <% if (attractions && attractions.length > 0) { %>
+                <% attractions.forEach(attraction => {
+                    const imageUrl = attraction.image || 'https://via.placeholder.com/400x250?text=No+Image';
+                %>
+                    <div class="attraction-card">
+                        <a href="/attractions/<%= attraction._id %>" class="attraction-link">
+                            <div class="card-image" style="background-image: url('<%= imageUrl %>');"></div>
+                            <span class="price-badge"><%= attraction.price === 0 ? 'Free' : '$' + attraction.price %></span>
+                            <div class="card-content">
+                                <h3 class="card-title"><%= attraction.name %></h3>
+                                <p class="card-location"><%= attraction.country ? attraction.country.name : 'N/A' %></p>
+                                
+                                <div class="rating star-rating">
+                                    <% for (let i = 1; i <= 5; i++) { %>
+                                        <span class="star <%= i <= attraction.averageRating ? 'filled' : '' %>">&#9733;</span>
+                                    <% } %>
+                                    <span class="average-rating">(<%= attraction.averageRating || '0' %>/5)</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="read-more" onclick="toggleReadMore(this, event)">
+                            Read more
+                            <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="read-more-content">
+                            <p><%= attraction.description %></p>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No attractions available.</p>
+            <% } %>
+        </div>
+        </section>
+
+        <link rel="stylesheet" />
+        <script>
+            // Log image URLs for debugging
+            document.addEventListener('DOMContentLoaded', () => {
+                const attractionCards = document.querySelectorAll('.attraction-card');
+                attractionCards.forEach(card => {
+                    const imageUrl = card.querySelector('.card-image').style.backgroundImage;
+                    console.log('Image URL for attraction card:', imageUrl);
+                });
+            });
+        </script>
+        <script
+            src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-vA3D3G3LyrFzN24f9KRzEwUpKUBuX3MZ2CRGPrZMTjU="
+            crossorigin=""
+        ></script>
+        <h2 class="section-title">Explore the Map</h2>
+        <div class="map-wrapper">
+<div id="map" class="styled-map"></div>
+        </div>
+
+        <!-- Leaflet and dynamic map setup -->
+        <script>
+            const trips = JSON.parse(`<%- JSON.stringify(trips || []) %>`)
+            const map = L.map('map').setView([26.8206, 30.8025], 5) // Egypt center
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors',
+            }).addTo(map)
+
+            trips.forEach((trip) => {
+                if (trip.coordinates?.lat && trip.coordinates.lng) {
+                    L.marker([trip.coordinates.lat, trip.coordinates.lng])
+                        .addTo(map)
+                        .bindPopup(
+                            `<strong>${trip.title}</strong><br>${
+                                trip.country?.name || ''
+                            }<br>$${trip.price}`
+                        )
+                }
+            })
+        </script>
+
+        <%- include('partials/footer') %>
+        <script>
+            var mapp = L.map('mappp').setView([20, 0], 2) // World view
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors',
+            }).addTo(mapp)
+
+            var countries = [
+                {
+                    name: 'France',
+                    lat: 48.8566,
+                    lon: 2.3522,
+                    page: 'france.html',
+                },
+                {
+                    name: 'Italy',
+                    lat: 41.9028,
+                    lon: 12.4964,
+                    page: 'italy.html',
+                },
+                {
+                    name: 'Spain',
+                    lat: 40.4168,
+                    lon: -3.7038,
+                    page: 'spain.html',
+                },
+                {
+                    name: 'Germany',
+                    lat: 52.52,
+                    lon: 13.405,
+                    page: 'germany.html',
+                },
+                {
+                    name: 'United Kingdom',
+                    lat: 51.5074,
+                    lon: -0.1278,
+                    page: 'uk.html',
+                },
+                {
+                    name: 'United States',
+                    lat: 38.9072,
+                    lon: -77.0369,
+                    page: 'usa.html',
+                },
+                {
+                    name: 'Canada',
+                    lat: 45.4215,
+                    lon: -75.6972,
+                    page: 'canada.html',
+                },
+                {
+                    name: 'Japan',
+                    lat: 35.6895,
+                    lon: 139.6917,
+                    page: 'japan.html',
+                },
+                {
+                    name: 'Australia',
+                    lat: -33.8688,
+                    lon: 151.2093,
+                    page: 'australia.html',
+                },
+                {
+                    name: 'Brazil',
+                    lat: -15.7939,
+                    lon: -47.8828,
+                    page: 'brazil.html',
+                },
+                {
+                    name: 'Egypt',
+                    lat: 26.8206,
+                    lon: 30.8025,
+                    page: 'egypt.html',
+                },
+            ]
+
+            countries.forEach(function (country) {
+                L.marker([country.lat, country.lon])
+                    .addTo(mapp)
+                    .bindPopup(country.name)
+                    .on('click', function () {
+                        window.location.href = country.page
+                    })
+            })
+            
+        </script>
+        <script src="/js/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="/swiper.js"></script>
+    </body>
+</html>

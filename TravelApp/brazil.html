@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Brazil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Patrick+Hand&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Explore Brazil!</h1>
+        <p>Discover the largest country in South America</p>
+    </div>
+
+    <main class="main-content">
+        <article>
+            <img src="images/brazil-map.jpg" alt="Brazil Map" class="article-image">
+            <div class="image-caption">
+                <p>Brazil has the Amazon rainforest and the world's largest carnival celebration!</p>
+            </div>
+
+            <h2 class="section-title">Geography & Nature</h2>
+            <p>Brazil contains 60% of the Amazon rainforest and over 4,000 beaches.</p>
+
+            <div class="fun-fact">
+                <h3>🌳 Did You Know?</h3>
+                <p>Brazil has more animal and plant species than any other country!</p>
+            </div>
+
+            <h2 class="section-title">Culture & History</h2>
+            <p>Brazil gave us samba music, capoeira martial art, and the Christ the Redeemer statue.</p>
+        </article>
+
+        <aside class="quick-facts">
+            <h2>Brazil Fast Facts</h2>
+            <div class="fact-item">
+                <div class="fact-icon">🌍</div>
+                <div class="fact-content">
+                    <h3>Geography</h3>
+                    <p>Area: 8.5 million km²<br>5th largest country</p>
+                </div>
+            </div>
+            
+            <div class="fact-item">
+                <div class="fact-icon">👫</div>
+                <div class="fact-content">
+                    <h3>Population</h3>
+                    <p>214 million people<br>25% under 14 years old</p>
+                </div>
+            </div>
+
+            <div class="fact-item">
+                <div class="fact-icon">🏛️</div>
+                <div class="fact-content">
+                    <h3>Government</h3>
+                    <p>Federal republic<br>26 states + federal district</p>
+                </div>
+            </div>
+
+            <div class="fact-item">
+                <div class="fact-icon">🐆</div>
+                <div class="fact-content">
+                    <h3>National Symbols</h3>
+                    <p>Animal: Jaguar<br>Motto: "Ordem e Progresso"</p>
+                </div>
+            </div>
+        </aside>
+        <section class="restaurant-system">
+            <h2 class="section-title">Restaurant Recommendations</h2>
+            <div class="filter-buttons">
+                <h2>Cuisines</h2>
+                <label><input type="checkbox" value="spanish"> Spanish</label>
+                <label><input type="checkbox" value="european"> European</label>
+                <label><input type="checkbox" value="asian"> Asian</label>
+                <label><input type="checkbox" value="italian"> Italian</label> 
+                <br><br>
+            </div>
+
+            <div class="restaurant-cards">
+                <div class="restaurant-card" data-cuisine="spanish">
+                    <img src="images/br1.jpg" alt="Spanish Restaurant in Brazil">
+                    <div class="restaurant-info">
+                        <h3>Bar do Léo</h3>
+                        <p>4.8 <span>(1,800 reviews)</span> - Open now</p>
+                        <p>Spanish, Tapas - $$$</p>
+                        <p>"Famous for its Spanish tapas and welcoming ambiance in Rio de Janeiro."</p><br>
+                        <a href="reserve.html" class="reserve-button">Reserve</a>
+                    </div>
+                </div>
+
+                <div class="restaurant-card" data-cuisine="asian">
+                    <img src="images/br3.jpg" alt="Asian Restaurant in Brazil">
+                    <div class="restaurant-info">
+                        <h3>Kan Suki</h3>
+                        <p>4.6 <span>(1,100 reviews)</span> - Open now</p>
+                        <p>Asian Fusion - $$</p>
+                        <p>"A delicious mix of Asian fusion cuisine, including Japanese and Thai dishes, located in São Paulo."</p><br>
+                        <a href="reserve.html" class="reserve-button">Reserve</a>
+                    </div>
+                </div>
+
+                <div class="restaurant-card" data-cuisine="italian">
+                    <img src="images/br4.jpg" alt="Italian Restaurant in Brazil">
+                    <div class="restaurant-info">
+                        <h3>Osteria del Almo</h3>
+                        <p>4.9 <span>(1,400 reviews)</span> - Open now</p>
+                        <p>Italian - $$$</p>
+                        <p>"Serving fresh, handmade pasta with a traditional Italian touch in Rio de Janeiro."</p>
+                        <a href="reserve.html" class="reserve-button">Reserve</a>
+                    </div>
+                </div>
+
+                <div class="restaurant-card" data-cuisine="european">
+                    <img src="images/br2.jpg" alt="European Restaurant in Brazil">
+                    <div class="restaurant-info">
+                        <h3>La Cuisine Française</h3>
+                        <p>4.7 <span>(950 reviews)</span> - Closed today</p>
+                        <p>European - $$$</p>
+                        <p>"Elegant French-European cuisine in a charming setting in the heart of São Paulo."</p><br>
+                        <a href="reserve.html" class="reserve-button">Reserve</a>
+                    </div>
+                </div>
+            </div>
+            <section class="hotel-system">
+                <h2 class="section-title">Hotel Recommendations</h2>
+                <div class="filter-buttons">
+                  <h2>Star rating</h2>
+                  <label><input type="checkbox" value="1/2"> 1/2 stars</label>
+                  <label><input type="checkbox" value="3"> 3 stars</label>
+                  <label><input type="checkbox" value="4"> 4 stars</label>
+                  <label><input type="checkbox" value="5"> 5 stars</label>
+                  <br><br>
+                </div>
+          
+                <div class="hotel-cards">
+                  <div class="hotel-card" data-rate="1/2">
+                    <img src="images/bh1.jpg" alt="Budget Hotel Rio de Janeiro">
+                    <div class="hotel-info">
+                      <h3>Rio Budget Inn</h3>
+                      <p>$$ / night</p>
+                      <p><span>300 reviews</span></p>
+                      <p>Cozy and affordable stay in vibrant Rio de Janeiro</p>
+                      <p>Free WiFi · Complimentary breakfast</p><br><br>
+                      <a href="reserve.html" class="reserve-button">Reserve</a><br>
+                    </div>
+                  </div>
+          
+                  <div class="hotel-card" data-rate="3">
+                    <img src="images/brazilh2.jpg" alt="3-star Hotel São Paulo">
+                    <div class="hotel-info">
+                      <h3>Hotel São Paulo Central</h3>
+                      <p>$$$ / night</p>
+                      <p>480 reviews</p>
+                      <p>"Convenient location in the heart of São Paulo"</p><br>
+                      <a href="reserve.html" class="reserve-button">Reserve</a><br>
+                    </div>
+                  </div>
+          
+                  <div class="hotel-card" data-rate="4">
+                    <img src="images/brazil3.jpg" alt="4-star Hotel Salvador">
+                    <div class="hotel-info">
+                      <h3>Salvador Boutique Hotel</h3>
+                      <p><span>850 reviews</span></p>
+                      <p>$$$ / night</p>
+                      <p>"Modern amenities with a touch of Brazilian flair"</p>
+                      <p>Close to historic sites and lively cultural spots</p><br>
+                      <a href="reserve.html" class="reserve-button">Reserve</a>
+                    </div>
+                  </div>
+          
+                  <div class="hotel-card" data-rate="5">
+                    <img src="images/brazil5.avif" alt="Luxury Hotel Brazil">
+                    <div class="hotel-info">
+                      <h3>Grand Hotel Copacabana</h3>
+                      <p><span>1,200 reviews</span></p>
+                      <p>$$$$ / night</p>
+                      <p>Luxury stay with stunning ocean views and upscale amenities</p>
+                      <p>Exceptional service and gourmet dining experiences</p><br><br>
+                      <a href="reserve.hote.html" class="reserve-button">Reserve</a>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </section>
+            <footer></footer>
+            <script src="main.js"></script>
+
+    </main>
+</body>
+</html>

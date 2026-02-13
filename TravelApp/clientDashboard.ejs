@@ -1,0 +1,80 @@
+<%- include('../partials/header') %>
+<%- include('../partials/sidebar') %>
+
+<link rel="stylesheet" href="/clientdashboard.css">
+<link rel="stylesheet" href="/homepage.css">
+
+<main class="client-account">
+  <h1>Hello!, <%= user.name %>!</h1>
+
+  <!-- ====================== -->
+  <!-- Profile Information -->
+  <!-- ====================== -->
+   <div class="cards-grid">
+  <section class="profile-section">
+    <h2>My Profile</h2>
+    <p><strong>Name:</strong> <%= user.name %></p>
+    <p><strong>Email:</strong> <%= user.email %></p>
+    <% if (user.phone) { %>
+      <p><strong>Phone:</strong> <%= user.phone %></p>
+    <% } %>
+    <a href="/profile" class="btn">Edit Profile</a>
+  </section>
+
+  <!-- ====================== -->
+  <!-- Bookings Table -->
+  <!-- ====================== -->
+  <section class="bookings-section">
+    <h2>My Bookings</h2>
+    <% if (bookings.length === 0) { %>
+      <p>You have no bookings yet.</p>
+  <a href="/trips" class="btn">Explore trips</a>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Trip</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% bookings.forEach(booking => { %>
+            <tr>
+              <td><%= booking.tripName %></td>
+              <td><%= booking.startDate %></td>
+              <td><%= booking.endDate %></td>
+              <td><%= booking.status %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+  </section>
+
+  <!-- ====================== -->
+  <!-- Saved Attractions -->
+  <!-- ====================== -->
+  <section class="favorites-section">
+    <h2>Saved Attractions</h2>
+    <% if (favorites.length === 0) { %>
+      <p>You have no saved attractions yet.</p>
+    <% } else { %>
+      <ul>
+        <% favorites.forEach(attraction => { %>
+          <li>
+            <%= attraction.name %>
+            <form action="/favorites/remove/<%= attraction._id %>" method="POST" style="display:inline;">
+              <button type="submit" class="remove-btn">Remove</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+    <% } %>
+    <a href="/attractions" class="btn">Explore Attractions</a>
+  </section>
+</div>
+</main>
+
+<%- include('../partials/footer') %>
